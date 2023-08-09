@@ -2,13 +2,23 @@ class Person{
 
     static count = 0;
 
+    static get MAX_OBJ(){
+        return 4;
+    }
     _mail;
     _email = 'test@default.value';
 
     constructor(name,lastname){
-        this._name = name;
-        this._lastname = lastname;
-        Person.count++;
+
+        if(Person.count<Person.MAX_OBJ){
+            Person.count++;
+            this._name = name;
+            this._lastname = lastname;
+        }
+        else{
+            console.log('Maximum objects limit');
+            return;
+        }
     }
 
     get name(){
@@ -87,3 +97,14 @@ console.log(Employee.count);
 person._mail = 'test@mail.com';
 console.log(person._mail);
 console.log(person._email);
+
+let person3 = new Person('Carolina', 'Yurgen');
+console.log(Employee.count);
+
+let person4 = new Person('Junior', 'Alquelaifi');
+console.log(Employee.count);
+
+let person5 = new Person('Junior', 'Alquelaifi');
+console.log(Employee.count);
+
+console.log(person5.lastname);
