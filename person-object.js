@@ -1,7 +1,14 @@
 class Person{
+
+    static count = 0;
+
+    _mail;
+    _email = 'test@default.value';
+
     constructor(name,lastname){
         this._name = name;
         this._lastname = lastname;
+        Person.count++;
     }
 
     get name(){
@@ -27,9 +34,18 @@ class Person{
     toString(){
         return this.fullName();
     }
+
+    static hellow(){
+        console.log('Hi this is a static method');
+    }
+
+    static hellow2(person){
+        console.log(person.name);
+    }
 }
 
 let person = new Person('NameTest', 'LastNameTest');
+
 
 console.log(person.toString());
 console.log(person.fullName());
@@ -62,3 +78,12 @@ let employee = new Employee('NameTest', 'LastNameTest', 'JobAreaTest');
 
 console.log(employee.toString());
 console.log(employee.fullName());
+
+Person.hellow();
+Person.hellow2(person);
+Employee.hellow2(employee);
+console.log(Employee.count);
+
+person._mail = 'test@mail.com';
+console.log(person._mail);
+console.log(person._email);
