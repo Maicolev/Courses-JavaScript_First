@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Html + JS course</title>
+</head>
+<body>
+
+    <h1 id = 'first-h1'>Hello, this is a h1</h1>
+    <p id = 'first-p'>now, this is a paragraph</p>
+    <p id = 'p-empty'> n</p>
+
+    <script>
+        let myH1 = document.getElementById('first-h1').innerHTML;
+        console.log(myH1);
+        console.log('New js');
+
+        let myP = document.getElementById('p-empty');
+        console.log(myP);
+        myP.innerHTML = 'Hi, i change this paragraph';
+    </script>
+</body>
+</html>
