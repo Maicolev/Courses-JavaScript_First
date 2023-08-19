@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Html + JS course</title>
+    <style>
+        .blue{
+            color:blue;
+        }
+    </style>
 </head>
 <body>
 
@@ -10,14 +15,41 @@
     <p id = 'first-p'>now, this is a paragraph</p>
     <p id = 'p-empty'> n</p>
 
+    <h2 class="blue">Hello, this is a h2</h2>
+    <p class="blue"> this example</p>
+    <p class="blue"> other example</p>
+
     <script>
+        //getElementById
+        console.log('------getElementById------')
         let myH1 = document.getElementById('first-h1').innerHTML;
         console.log(myH1);
         console.log('New js');
 
         let myP = document.getElementById('p-empty');
-        console.log(myP);
+        console.log(myP.innerHTML);
         myP.innerHTML = 'Hi, i change this paragraph';
+
+        //getElementsByTagName
+        console.log('------getElementsByTagName------')
+        const mysP = document.getElementsByTagName('p');
+        for (let index = 0; index < mysP.length; index++) {
+            console.log(mysP[index].innerHTML);
+        }
+
+        //getElementsByTagName
+        console.log('------getElementsByClassName------')
+        const mysP2 = document.getElementsByClassName('blue');
+        for (const elementsByClassName of mysP2) {
+            console.log(elementsByClassName.innerHTML);
+        }
+
+        //querySelectorAll
+        console.log('------querySelectorAll------')
+        const mysP3 = document.querySelectorAll('p.blue');
+        for (const elementsByClassName of mysP3) {
+            console.log(elementsByClassName.innerHTML);
+        }
     </script>
 </body>
 </html>
