@@ -19,6 +19,7 @@
     <p class="blue"> this example</p>
     <p class="blue"> other example</p>
 
+    <!-- get elements-->
     <script>
         //getElementById
         console.log('------getElementById------')
@@ -51,5 +52,34 @@
             console.log(elementsByClassName.innerHTML);
         }
     </script>
+
+    <!-- forms -->
+    <form id="formTest">
+        <label>Name</label>
+        <input type="text" name="name" value="Roberto">
+
+        <label>Last name</label>
+        <input type="text" name="lastName" value="Tijuana">
+
+        <button onclick="showData()">Show data</button>
+    </form>
+
+    <div id="view-elements"></div>
+
+    <script>
+        console.log('text');
+        function showData(){
+            console.log('text2');
+            let form = document.forms["formTest"];
+            let text = '';
+
+            for (const element of form) {
+                text += element.value + ' ';
+            }
+            console.log(text);
+            document.getElementById("view-elements").innerHTML = text;
+        }
+    </script>
+
 </body>
 </html>
