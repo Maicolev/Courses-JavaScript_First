@@ -65,19 +65,45 @@
     </form>
 
     <div id="view-elements"></div>
+    <div id="individual-elements"></div>
 
     <script>
-        console.log('text');
         function showData(){
-            console.log('text2');
             let form = document.forms["formTest"];
             let text = '';
 
             for (const element of form) {
                 text += element.value + ' ';
             }
-            console.log(text);
             document.getElementById("view-elements").innerHTML = text;
+
+            let text2 = '';
+            let formName = form['name'];
+            let formLastName = form['lastName'];
+            text2 = formName.value + ' ' + formLastName.value;
+
+            document.getElementById('individual-elements').innerHTML = text2;
+        }
+    </script>
+
+    <h2>Write JS</h2>
+    <button onclick="viewWrite()">View write</button>
+    <button onclick="changeImage()">Change image</button>
+    <br>
+    <img id="image-" src="./source/javascript.jpg">
+    <br>
+    <script>
+        document.write("Write JS script");
+        function viewWrite(){
+            document.write("Write button executed");
+        }
+
+        function changeImage(){
+            let newImage = "./source/html5.png";
+            document.getElementById("image-").src = newImage;
+            document.getElementById("image-").style.width = '120px';
+            console.log(document.getElementById("image-").src);
+            document.getElementById("image-").style.height = '130px';
         }
     </script>
 
