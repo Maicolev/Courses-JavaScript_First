@@ -9,7 +9,22 @@
         }
     </style>
 </head>
-<body>
+<body onload="loadBody()">
+
+    <div id="div-cookies"></div>
+    <script>
+        function loadBody(){
+            alert('Start web page');
+
+            let text = '';
+            if (navigator.cookieEnabled) {
+                text = 'Cookies are enabled';
+            } else {
+                text = 'Cookies are disabled';
+            }
+            document.getElementById('div-cookies').innerHTML = text;
+        }
+    </script>
 
     <h1 id = 'first-h1'>Hello, this is a h1</h1>
     <p id = 'first-p'>now, this is a paragraph</p>
@@ -107,5 +122,86 @@
         }
     </script>
 
+    <!-- DOM events-->
+    <h3 onclick="this.innerHTML = 'new title'">title test change</h3>
+    <h3 onclick="titleChangeFunction(this)"> title test change with function event</h3>
+    <h3 onmouseover="mouseOverFunction(this)" onmouseout="mouseOutFunction(this)">Test mouse events</h3>
+    <label>Name:</label>
+    <input type="text" onchange="changeNameFunction(this)" >
+    <label>Last Name:</label>
+    <input type="text" onfocus="focusFunction(this)" onblur="blurFunction(this)">
+    <br><br>
+
+    <label>Name2:</label>
+    <input type="text" id="name2">
+    <label>Last Name2:</label>
+    <input type="text" id="lastName2">
+    <br><br>
+
+    <form id="formSimplify">
+        <label>Name form:</label>
+        <input type="text" id="nameForm">
+        <label>Last Name form:</label>
+        <input type="text" id="lastNameForm">
+    </form>
+
+
+    <script>
+        function titleChangeFunction (element_h3){
+            element_h3.innerHTML = 'new title with function';
+        }
+
+        function changeNameFunction(element_input){
+            element_input.value = element_input.value.toUpperCase();
+        }
+
+        function mouseOutFunction(h3_element){
+            h3_element.style.color = 'red';
+        }
+        function mouseOverFunction(h3_element){
+            h3_element.style.color = 'blue';
+        }
+
+        function focusFunction(inputElement){
+            inputElement.style.background = 'purple';
+        }
+        function blurFunction(inputElement){
+            inputElement.style.background = 'white';
+        }
+
+        document.getElementById('name2').addEventListener('focus',changeBackgroundF);
+        document.getElementById('name2').addEventListener('blur',changeBackgroundB);
+        function changeBackgroundF(event){
+            let component = event.target;
+            component.style.background = 'yellow';
+        }
+
+        function changeBackgroundB(event){
+            let component = event.target;
+            component.style.background = 'white';
+        }
+
+        //with array functions
+        document.getElementById('lastName2').addEventListener('focus',(event) => {
+            event.target.style.background = 'pink';
+        });
+        document.getElementById('lastName2').addEventListener('blur', (event) => {
+            let component = event.target;
+            component.style.background = 'white';
+        });
+
+        //only form
+        const formS = document.getElementById('formSimplify');
+        formS.addEventListener('focus', (event) => {
+            let component = event.target;
+            component.style.background = 'purple';
+        }, true);
+
+        formS.addEventListener('blur', (event) => {
+            let component = event.target;
+            component.style.background = 'white';
+        }, true);
+
+    </script>
 </body>
 </html>
