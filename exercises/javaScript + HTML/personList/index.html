@@ -8,17 +8,29 @@
 </head>
 <body>
     <main>
-        <h1>Person list </h1>
+        <div class="container" id="head">
+            <h1>Person list </h1>
+        </div>
         <section>
             <article class="container">
-            hi
+                <div class="element" id="div_array">
+                    <ul id="ul_array"></ul>
+                </div>
             </article>
             <article class="container">
-hi2
-
+                <div style="text-align: center;">
+                    <button style="cursor: pointer;" onclick="addPersonHtml()">+</button>
+                </div>
+                <form id="form">
+                    <div>
+                        <input type="text" id="name" placeholder="Name">
+                        <input type="text" id="lastName" placeholder="Last Name">
+                    </div>
+                </form>
             </article>
         </section>
     </main>
 </body>
+<script src="js/person.js""></script>
 <script src="js/jsFile.js""></script>
 </html>
