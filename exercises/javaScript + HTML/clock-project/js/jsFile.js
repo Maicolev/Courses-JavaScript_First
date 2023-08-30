@@ -78,20 +78,17 @@ const clock  = () => {
     let hour = date.getHours();
     let minutes = date.getMinutes();
     let seconds = date.getSeconds();
-
     document.getElementById('div-clock').innerHTML = (`${hour}:${minutes}:${seconds}`);
 
     let weekDayString = weekDayStringF( date.getDay());
     let day = date.getDate();
     let monthString = monthStringF(date.getMonth()+1);
-
     document.getElementById('div-date').innerHTML = (`${weekDayString} ${day} ${monthString}`);
+
+    document.getElementById('container').classList.toggle('animate');
 
 }
 
-//console.log(`The month number ${monthNumber} corresponds to ${monthName}`);
-//}
-
 clock();
-setInterval(clock,500);
+setInterval(clock,1000);
 
