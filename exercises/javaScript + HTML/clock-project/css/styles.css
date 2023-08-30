@@ -1,0 +1,16 @@
+.div-date{
+    font-size: 35px;
+}
+
+.div-clock{
+color: blue;
+}
+
+.container{
+    padding: 100px;
+    border: 200px;
+    margin: 100px;
+    font-size: 100px;
+    font-weight: 200;
+    color: #00204a;
+}
