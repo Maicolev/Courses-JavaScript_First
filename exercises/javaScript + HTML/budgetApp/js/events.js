@@ -1,3 +1,5 @@
+
+
 function addBudget(){
     let budgetType = document.getElementById('budgetType').value;
     let budgetDescription = document.getElementById('description').value;
@@ -42,6 +44,16 @@ function listIncomes(){
 function listExpenses(){
     let tableExpenses = document.getElementById('tb_expenses');
     let trExpenses = document.createElement('tr');
+    let tdButtonExpenses = document.createElement('td');
+
+    trExpenses.setAttribute('id','tr_expenses');
+    trExpenses.addEventListener('mouseover', showButtonTr, false );
+    trExpenses.addEventListener('mouseout', hideButtonTr, false );
+
+    tdButtonExpenses.appendChild(document.createTextNode('-'));
+    tdButtonExpenses.setAttribute('id','td_button_delete');
+    tdButtonExpenses.setAttribute('hidden','hidden');
+    trExpenses.appendChild(tdButtonExpenses);
 
     let tdExpensesDescription = document.createElement('td');
     let tdExpensesAmount = document.createElement('td');
@@ -59,4 +71,32 @@ function calculateBudget(){
     document.getElementById('totalBudget').innerHTML = totalBudget();
     document.getElementById('totalExpense').innerHTML = totalExpenses();
     document.getElementById('totalIncome').innerHTML = totalIncomes();
+}
+
+function showButtonTr(){
+    let tdButtonExpenses = document.getElementById('td_button_delete');
+    tdButtonExpenses.removeAttribute('hidden');
+   /** let tableExpenses = document.getElementById('tb_expenses');
+    let trExpenses = document.getElementById('tr_expenses');
+    let tdButtonExpenses = document.createElement('td');
+
+    tdButtonExpenses.appendChild(document.createTextNode('-'));
+    trExpenses.appendChild(tdButtonExpenses);
+
+    tableExpenses.appendChild(trExpenses);
+    */
+}
+
+function hideButtonTr(){
+    let tdButtonExpenses = document.getElementById('td_button_delete');
+    tdButtonExpenses.setAttribute('hidden','hidden');
+   /** let tableExpenses = document.getElementById('tb_expenses');
+    let trExpenses = document.getElementById('tr_expenses');
+    let tdButtonExpenses = document.createElement('td');
+
+    tdButtonExpenses.appendChild(document.createTextNode('-'));
+    trExpenses.appendChild(tdButtonExpenses);
+
+    tableExpenses.appendChild(trExpenses);
+    */
 }
