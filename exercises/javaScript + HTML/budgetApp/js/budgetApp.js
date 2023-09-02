@@ -35,4 +35,4 @@ function totalBudget(){
 /**addIncome('test1', 3999);
 addExpense('test2', -3999);
 addExpense('test3', -3969);**/
-console.log(incomes);
+//console.log(incomes);

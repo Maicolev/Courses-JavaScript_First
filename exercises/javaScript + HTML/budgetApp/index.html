@@ -1,44 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    available budget:
+  </head>
+  <body>
+    Available budget:
     <div id="totalBudget">0</div>
 
-    total expenses
-    <div id="totalExpense">0</div>
+    <div>
+        Expenses:
+        <div id="totalExpense">0</div>
 
-    total incomes
-    <div id="totalIncome">0</div>
+        Incomes:
+        <div id="totalIncome">0</div>
+    </div>
+    <br />
 
-    <button onclick="calculateBudget()">click me</button>
-<br>
-
-<form>
-    <select id="budgetType" name="budgetType">
+    <form>
+      <select id="budgetType" name="budgetType">
         <option>+</option>
         <option>-</option>
-    </select>
+      </select>
 
-    add description 
-<input id="description" type="text">
+      <label for="description">Description</label>
+      <input type="text" id="description" name="description" required/>
 
-add amount
+      <label for="amount">Amount</label>
+      <input type="number" id="amount" name="amount" required/>
+    </form>
+    <button onclick="addBudget()">check</button>
 
-<input id="amount" type="text">
+    <br />
 
-</form>
-<button onclick="addBudget()">check</button>
+    <div>
+      <table id="tb_incomes">
+        incomes
+      </table>
+    </div>
 
+    <div>
+      <table id="tb_expenses">
+        expenses
+      </table>
+    </div>
 
-
-    <script src="./js/events.js" ></script>
-    <script src="./js/income.js" ></script>
-    <script src="./js/expense.js" ></script>
-    <script src="./js/budgetApp.js" ></script>
-</body>
+    <script src="./js/income.js"></script>
+    <script src="./js/expense.js"></script>
+    <script src="./js/budgetApp.js"></script>
+    <script src="./js/events.js"></script>
+  </body>
 </html>
