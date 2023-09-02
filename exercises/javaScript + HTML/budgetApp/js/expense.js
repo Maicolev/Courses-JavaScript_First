@@ -4,7 +4,7 @@ class Expense{
     constructor(description, amount){
         Expense._idExpense++;
         this._description = description;
-        this._amount = amount;
+        this._amount = parseInt(amount);
     }
 
     get idExpense(){

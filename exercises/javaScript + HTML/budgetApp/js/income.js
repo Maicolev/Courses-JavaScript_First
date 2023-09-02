@@ -4,7 +4,7 @@ class Income{
     constructor(description, amount){
         Income._idIncome++;
         this._description = description;
-        this._amount = amount;
+        this._amount = parseInt(amount);
     }
 
     get idIncome(){

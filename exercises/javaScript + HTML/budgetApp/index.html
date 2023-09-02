@@ -12,10 +12,29 @@
     total expenses
     <div id="totalExpense">0</div>
 
-    total income
+    total incomes
     <div id="totalIncome">0</div>
 
     <button onclick="calculateBudget()">click me</button>
+<br>
+
+<form>
+    <select id="budgetType" name="budgetType">
+        <option>+</option>
+        <option>-</option>
+    </select>
+
+    add description 
+<input id="description" type="text">
+
+add amount
+
+<input id="amount" type="text">
+
+</form>
+<button onclick="addBudget()">check</button>
+
+
 
     <script src="./js/events.js" ></script>
     <script src="./js/income.js" ></script>
