@@ -1,4 +1,5 @@
-
+let countButtonExpenses = 0;
+let countButtonIncomes = 0;
 
 function addBudget(){
     let budgetType = document.getElementById('budgetType').value;
@@ -11,47 +12,60 @@ function addBudget(){
     }
     else{
         if (budgetType == '-') {
-            addExpense(budgetDescription, budgetAmount);
-            listExpenses();
+            listExpenses(addExpense(budgetDescription, budgetAmount));
         }
         else if (budgetType == '+'){
-            addIncome(budgetDescription, budgetAmount);
-            listIncomes();
+            listIncomes(addIncome(budgetDescription, budgetAmount));
         }
         calculateBudget();
     }
 }
 
-function listIncomes(){
+function listIncomes(idIncome){
     let tableIncomes = document.getElementById('tb_incomes');
     let trIncomes = document.createElement('tr');
+    let tdButtonIncomes = document.createElement('td');
     //let trExpenses = document.getElementById('tr_expenses');
 
+    trIncomes.setAttribute('id','tr_incomes');
+    trIncomes.addEventListener('mouseover', () => {tdButtonIncomes.removeAttribute('hidden')} , false );
+    trIncomes.addEventListener('mouseout', () => {tdButtonIncomes.setAttribute('hidden','hidden');}, false );
+
+    tdButtonIncomes.appendChild(document.createTextNode('-'));
+    tdButtonIncomes.setAttribute('id','td_button_delete' + ++countButtonIncomes);
+    tdButtonIncomes.setAttribute('hidden','hidden');
+    tdButtonIncomes.addEventListener('click', () => {
+        const index = incomes.findIndex(income => income.idIncome ==idIncome);
+        alert(index);
+        if (index !== -1) {incomes.splice(index, 1);}
+    } , false);
+
+    trIncomes.appendChild(tdButtonIncomes);
     //for(let i = 0; i < incomes.length; i++){
-        let tdIncomesDescription = document.createElement('td');
-        let tdIncomesAmount = document.createElement('td');
+    let tdIncomesDescription = document.createElement('td');
+    let tdIncomesAmount = document.createElement('td');
 
-        tdIncomesDescription.appendChild(document.createTextNode(incomes[incomes.length-1].description));
-        trIncomes.appendChild(tdIncomesDescription);
+    tdIncomesDescription.appendChild(document.createTextNode(incomes[incomes.length-1].description));
+    trIncomes.appendChild(tdIncomesDescription);
 
-        tdIncomesAmount.appendChild(document.createTextNode(incomes[incomes.length-1].amount));
-        trIncomes.appendChild(tdIncomesAmount);
+    tdIncomesAmount.appendChild(document.createTextNode(incomes[incomes.length-1].amount));
+    trIncomes.appendChild(tdIncomesAmount);
     //}
 
     tableIncomes.appendChild(trIncomes);
 }
 
-function listExpenses(){
+function listExpenses(idExpense){
     let tableExpenses = document.getElementById('tb_expenses');
     let trExpenses = document.createElement('tr');
     let tdButtonExpenses = document.createElement('td');
 
     trExpenses.setAttribute('id','tr_expenses');
-    trExpenses.addEventListener('mouseover', showButtonTr, false );
-    trExpenses.addEventListener('mouseout', hideButtonTr, false );
+    trExpenses.addEventListener('mouseover', () =>{tdButtonExpenses.removeAttribute('hidden')} , false );
+    trExpenses.addEventListener('mouseout', () => {tdButtonExpenses.setAttribute('hidden','hidden');}, false );
 
     tdButtonExpenses.appendChild(document.createTextNode('-'));
-    tdButtonExpenses.setAttribute('id','td_button_delete');
+    tdButtonExpenses.setAttribute('id','td_button_delete' + ++countButtonExpenses);
     tdButtonExpenses.setAttribute('hidden','hidden');
     trExpenses.appendChild(tdButtonExpenses);
 
@@ -65,6 +79,7 @@ function listExpenses(){
     trExpenses.appendChild(tdExpensesAmount);
 
     tableExpenses.appendChild(trExpenses);
+    //countButtonExpenses+1;
 }
 
 function calculateBudget(){
@@ -73,9 +88,9 @@ function calculateBudget(){
     document.getElementById('totalIncome').innerHTML = totalIncomes();
 }
 
-function showButtonTr(){
-    let tdButtonExpenses = document.getElementById('td_button_delete');
-    tdButtonExpenses.removeAttribute('hidden');
+//function showButtonTr(buttonElement){
+    //let tdButtonExpenses = document.getElementById('td_button_delete' + countButtonExpenses);
+    //buttonElement.removeAttribute('hidden');
    /** let tableExpenses = document.getElementById('tb_expenses');
     let trExpenses = document.getElementById('tr_expenses');
     let tdButtonExpenses = document.createElement('td');
@@ -85,18 +100,8 @@ function showButtonTr(){
 
     tableExpenses.appendChild(trExpenses);
     */
-}
+//}
 
-function hideButtonTr(){
-    let tdButtonExpenses = document.getElementById('td_button_delete');
-    tdButtonExpenses.setAttribute('hidden','hidden');
-   /** let tableExpenses = document.getElementById('tb_expenses');
-    let trExpenses = document.getElementById('tr_expenses');
-    let tdButtonExpenses = document.createElement('td');
-
-    tdButtonExpenses.appendChild(document.createTextNode('-'));
-    trExpenses.appendChild(tdButtonExpenses);
-
-    tableExpenses.appendChild(trExpenses);
-    */
-}
+// 1. falta poner el boton de eliminar en incomes
+// 2. falta calcular el porcentaje de los egresos totales en relacion a los ingresos totales
+// 3. falta poner a funcionar el botón de eliminar

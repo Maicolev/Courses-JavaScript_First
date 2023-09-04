@@ -4,11 +4,13 @@ const expenses = [];
 function addIncome(description, amount){
     const newIncome = new Income(description, amount);
     incomes.push(newIncome);
+    return newIncome.idIncome;
 }
 
 function addExpense(description, amount){
     const newExpense = new Expense(description, amount);
     expenses.push(newExpense);
+    return newExpense.idExpense;
 }
 
 function totalIncomes(){
