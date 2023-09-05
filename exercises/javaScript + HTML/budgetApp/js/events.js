@@ -18,6 +18,7 @@ function addBudget(){
     }
 }
 
+//create table as list incomes
 function listIncomes(idIncome){
     let tableIncomes = document.getElementById('tb_incomes');
     let trIncomes = document.createElement('tr');
@@ -50,6 +51,7 @@ function listIncomes(idIncome){
     tableIncomes.appendChild(trIncomes);
 }
 
+//create table as list expenses
 function listExpenses(idExpense){
     let tableExpenses = document.getElementById('tb_expenses');
     let trExpenses = document.createElement('tr');
@@ -88,6 +90,7 @@ function calculateBudget(){
     document.getElementById('totalPercentage').innerHTML = totalPercentage();
 }
 
+//delete list elements (budget and tr)
 function deleteElement(budgetType, elementId){
     let id = getOnlyId(elementId);
     deleteBudget(budgetType,id);
@@ -128,7 +131,3 @@ function deleteTr(budgetType, id){
     tableExpenses.appendChild(trExpenses);
     */
 //}
-
-// 1. falta poner el boton de eliminar en incomes
-// 2. falta calcular el porcentaje de los egresos totales en relacion a los ingresos totales
-// 3. falta poner a funcionar el botón de eliminar
