@@ -25,6 +25,3 @@ class Expense{
         this._amount = amount;
     }
 }
-
-//let es = new Expense('test', 1000);
-//console.log(es.idExpense);

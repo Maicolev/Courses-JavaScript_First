@@ -34,7 +34,7 @@ function totalExpenses(){
 function totalBudget(){
     return totalIncomes() - totalExpenses();
 }
-/**addIncome('test1', 3999);
-addExpense('test2', -3999);
-addExpense('test3', -3969);**/
-//console.log(incomes);
+
+function totalPercentage(){
+    return (totalExpenses() * 100)/totalIncomes();
+}
