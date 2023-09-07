@@ -6,49 +6,51 @@
     <title>Document</title>
   </head>
   <body>
-    Available budget:
-    <div id="totalBudget">0</div>
+    <main>
+      <section>
+        <article>
+          Available budget:
+          <div id="totalBudget">0</div>
+        </article>
+        <article>
+          Incomes:
+          <div id="totalIncome">0</div>
 
-    <div>
-        Incomes:
-        <div id="totalIncome">0</div>
+          Expenses:
+          <div id="totalExpense">0</div>
+          <div id="totalPercentage">0</div>
+        </article>
+      </section>
 
-        Expenses:
-        <div id="totalExpense">0</div>
-        <div id="totalPercentage">0</div>
+      <section>
+        <select id="budgetType" name="budgetType">
+          <option>-</option>
+          <option>+</option>
+        </select>
 
-    </div>
-    <br />
+        <label for="description">Description</label>
+        <input type="text" id="description" name="description" required />
 
-    <form>
-      <select id="budgetType" name="budgetType">
-        <option>+</option>
-        <option>-</option>
-      </select>
+        <label for="amount">Amount</label>
+        <input type="number" id="amount" name="amount" required />
 
-      <label for="description">Description</label>
-      <input type="text" id="description" name="description" required/>
+        <button onclick="addBudget()">check</button>
+      </section>
 
-      <label for="amount">Amount</label>
-      <input type="number" id="amount" name="amount" required/>
-    </form>
-    <button onclick="addBudget()">check</button>
+      <section>
+        <article>
+          <table id="tb_incomes">
+            incomes
+          </table>
+        </article>
 
-    <br />
-
-    <div>
-      <table id="tb_incomes">
-        incomes
-      </table>
-    </div>
-
-    <div>
-      <table id="tb_expenses">
-        expenses
-      </table>
-    </div>
-
-    <div id="divExample"></div>
+        <article>
+          <table id="tb_expenses">
+            expenses
+          </table>
+        </article>
+      </section>
+    </main>
 
     <script src="./js/income.js"></script>
     <script src="./js/expense.js"></script>
