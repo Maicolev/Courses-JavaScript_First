@@ -22,30 +22,51 @@ function addBudget(){
 function listIncomes(idIncome){
     let tableIncomes = document.getElementById('tb_incomes');
     let trIncomes = document.createElement('tr');
+    let dvIncomes = document.createElement('div');
     let tdButtonIncomes = document.createElement('td');
+    let tdButtonIncomes_in = document.createElement('ion-icon');
+
+    dvIncomes.setAttribute('class','elemento_eliminar');
 
     trIncomes.setAttribute('id','tr_incomes_' + idIncome);
+    trIncomes.setAttribute('class','elemento limpiarEstilos');
     trIncomes.addEventListener('mouseover', () => {tdButtonIncomes.removeAttribute('hidden')} , false );
     trIncomes.addEventListener('mouseout', () => {tdButtonIncomes.setAttribute('hidden','hidden');}, false );
 
-    tdButtonIncomes.appendChild(document.createTextNode('-'));
-    tdButtonIncomes.setAttribute('id','td_button_delete_' + idIncome);
+    tdButtonIncomes.setAttribute('class', 'elemento_eliminar--btn');
+    tdButtonIncomes.setAttribute('hidden','hidden');
+    /** tdButtonIncomes.setAttribute('id','td_button_delete_' + idIncome);
     tdButtonIncomes.setAttribute('hidden','hidden');
     tdButtonIncomes.addEventListener('click', (event) => {
         let budgetType = '+'
         let elementId = event.target.id;
         deleteElement(budgetType, elementId);
+    } , false); */
+    //tdButtonIncomes.appendChild(document.createTextNode('-'));
+    tdButtonIncomes_in.setAttribute('name', 'close-circle-outline');
+    tdButtonIncomes_in.setAttribute('id','td_button_delete_' + idIncome);
+    //tdButtonIncomes_in.setAttribute('hidden','hidden');
+    tdButtonIncomes_in.addEventListener('click', (event) => {
+        let budgetType = '+'
+        let elementId = event.target.id;
+        deleteElement(budgetType, elementId);
     } , false);
 
-    trIncomes.appendChild(tdButtonIncomes);
+
+    tdButtonIncomes.appendChild(tdButtonIncomes_in);
+    dvIncomes.appendChild(tdButtonIncomes);
+    //trIncomes.appendChild(tdButtonIncomes);
 
     let tdIncomesDescription = document.createElement('td');
     let tdIncomesAmount = document.createElement('td');
 
+    tdIncomesDescription.setAttribute('class', 'elemento_descripcion');
     tdIncomesDescription.appendChild(document.createTextNode(incomes[incomes.length-1].description));
     trIncomes.appendChild(tdIncomesDescription);
 
+    tdIncomesAmount.setAttribute('class', 'elemento_valor');
     tdIncomesAmount.appendChild(document.createTextNode(incomes[incomes.length-1].amount));
+    tdIncomesAmount.appendChild(dvIncomes);
     trIncomes.appendChild(tdIncomesAmount);
 
     tableIncomes.appendChild(trIncomes);
@@ -56,27 +77,35 @@ function listExpenses(idExpense){
     let tableExpenses = document.getElementById('tb_expenses');
     let trExpenses = document.createElement('tr');
     let tdButtonExpenses = document.createElement('td');
+    let tdButtonExpenses_in = document.createElement('ion-icon');
 
     trExpenses.setAttribute('id','tr_expenses_' + idExpense);
+    trExpenses.setAttribute('class','elemento limpiarEstilos');
     trExpenses.addEventListener('mouseover', () =>{tdButtonExpenses.removeAttribute('hidden')} , false );
     trExpenses.addEventListener('mouseout', () => {tdButtonExpenses.setAttribute('hidden','hidden');}, false );
 
-    tdButtonExpenses.appendChild(document.createTextNode('-'));
-    tdButtonExpenses.setAttribute('id','td_button_delete_' +  idExpense);
+    tdButtonExpenses.setAttribute('class', 'elemento_eliminar');
     tdButtonExpenses.setAttribute('hidden','hidden');
-    tdButtonExpenses.addEventListener('click', (event) => {
+
+    tdButtonExpenses_in.setAttribute('name', 'close-circle-outline');
+    tdButtonExpenses_in.setAttribute('id','td_button_delete_' +  idExpense);
+    tdButtonExpenses_in.addEventListener('click', (event) => {
         let budgetType = '-'
         let elementId = event.target.id;
         deleteElement(budgetType, elementId);
     } , false);
+
+    tdButtonExpenses.appendChild(tdButtonExpenses_in);
     trExpenses.appendChild(tdButtonExpenses);
 
     let tdExpensesDescription = document.createElement('td');
     let tdExpensesAmount = document.createElement('td');
 
+    tdExpensesDescription.setAttribute('class', 'elemento_descripcion');
     tdExpensesDescription.appendChild(document.createTextNode(expenses[expenses.length-1].description));
     trExpenses.appendChild(tdExpensesDescription);
 
+    tdExpensesAmount.setAttribute('class', 'elemento_valor');
     tdExpensesAmount.appendChild(document.createTextNode(expenses[expenses.length-1].amount));
     trExpenses.appendChild(tdExpensesAmount);
 

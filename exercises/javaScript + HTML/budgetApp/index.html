@@ -3,58 +3,70 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>BudgetApp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/cssFile.css" />
   </head>
   <body>
     <main>
-      <section>
-        <article>
-          Available budget:
-          <div id="totalBudget">0</div>
-        </article>
-        <article>
-          Incomes:
-          <div id="totalIncome">0</div>
+      <section class="cabecero">
+        <section class="presupuesto">
+          <article >
+            <div class="presupuesto_titulo"> Available budget:</div>
+            <div class="presupuesto_valor" id="totalBudget">0</div>
+          </article>
+          <article class="presupuesto_ingreso limpiarEstilos">
+            <div class="presupuesto_ingreso--texto"> Incomes: </div>
+            <div class="derecha">
+              <div class="presupuesto_ingreso--valor" id="totalIncome">0</div>
+              <div class="presupuesto_ingreso--porcentaje">&nbsp;</div>
+            </div>
+          </article>
+          <article class="presupuesto_egreso limpiarEstilos">
+            <div class="presupuesto_egreso--texto"> Expenses: </div>
+            <div class="derecha limpiarEstilos">
+              <div class="presupuesto_egreso--valor" id='totalExpense'>0</div>
+              <div class="presupuesto_egreso--porcentaje" id='totalPercentage'>0</div>
+            </div>
+          </article>
+        </section>
+      </section>
 
-          Expenses:
-          <div id="totalExpense">0</div>
-          <div id="totalPercentage">0</div>
+      <section class="agregar">
+        <article class="agregar_contenedor">
+          <select class="agregar_tipo" id="budgetType" name="budgetType">
+            <option>-</option>
+            <option>+</option>
+          </select>
+
+          <input class="agregar_descripcion" type="text" id="description" name="description" required placeholder="Description"/>
+          <input class="agregar_valor" type="number" id="amount" name="amount" required placeholder="Amount"/>
+
+          <button class="agregar_btn" onclick="addBudget()">
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+          </button>
         </article>
       </section>
 
-      <section>
-        <select id="budgetType" name="budgetType">
-          <option>-</option>
-          <option>+</option>
-        </select>
-
-        <label for="description">Description</label>
-        <input type="text" id="description" name="description" required />
-
-        <label for="amount">Amount</label>
-        <input type="number" id="amount" name="amount" required />
-
-        <button onclick="addBudget()">check</button>
-      </section>
-
-      <section>
-        <article>
-          <table id="tb_incomes">
-            incomes
+      <section class="contenedor limpiarEstilos" >
+        <article class="ingreso">
+          <table class="table" id="tb_incomes">
+            <h2 class='ingreso_titulo'>Incomes</h2>
           </table>
         </article>
 
-        <article>
-          <table id="tb_expenses">
-            expenses
+        <article class="egreso">
+          <table class="table " id="tb_expenses">
+            <h2 class='egreso_titulo'>Egresos</h2>
           </table>
         </article>
       </section>
     </main>
-
     <script src="./js/income.js"></script>
     <script src="./js/expense.js"></script>
     <script src="./js/budgetApp.js"></script>
     <script src="./js/events.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
   </body>
 </html>
+
