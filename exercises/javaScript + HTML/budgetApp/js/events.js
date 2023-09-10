@@ -76,15 +76,18 @@ function listIncomes(idIncome){
 function listExpenses(idExpense){
     let tableExpenses = document.getElementById('tb_expenses');
     let trExpenses = document.createElement('tr');
+    let dvExpenses = document.createElement('div');
     let tdButtonExpenses = document.createElement('td');
     let tdButtonExpenses_in = document.createElement('ion-icon');
+
+    dvExpenses.setAttribute('class','elemento_eliminar');
 
     trExpenses.setAttribute('id','tr_expenses_' + idExpense);
     trExpenses.setAttribute('class','elemento limpiarEstilos');
     trExpenses.addEventListener('mouseover', () =>{tdButtonExpenses.removeAttribute('hidden')} , false );
     trExpenses.addEventListener('mouseout', () => {tdButtonExpenses.setAttribute('hidden','hidden');}, false );
 
-    tdButtonExpenses.setAttribute('class', 'elemento_eliminar');
+    tdButtonExpenses.setAttribute('class', 'elemento_eliminar--btn');
     tdButtonExpenses.setAttribute('hidden','hidden');
 
     tdButtonExpenses_in.setAttribute('name', 'close-circle-outline');
@@ -96,7 +99,7 @@ function listExpenses(idExpense){
     } , false);
 
     tdButtonExpenses.appendChild(tdButtonExpenses_in);
-    trExpenses.appendChild(tdButtonExpenses);
+    dvExpenses.appendChild(tdButtonExpenses);
 
     let tdExpensesDescription = document.createElement('td');
     let tdExpensesAmount = document.createElement('td');
@@ -107,6 +110,7 @@ function listExpenses(idExpense){
 
     tdExpensesAmount.setAttribute('class', 'elemento_valor');
     tdExpensesAmount.appendChild(document.createTextNode(expenses[expenses.length-1].amount));
+    tdExpensesAmount.appendChild(dvExpenses);
     trExpenses.appendChild(tdExpensesAmount);
 
     tableExpenses.appendChild(trExpenses);

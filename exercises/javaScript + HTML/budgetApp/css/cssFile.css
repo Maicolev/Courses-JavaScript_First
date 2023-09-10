@@ -249,7 +249,7 @@ h2 {
 .elemento {
     padding: 13px;
     border-bottom: 1px solid #e7e7e7;
-    height: 35px;
+    height: 40px;
 }
 
 .elemento:first-child { border-top: 1px solid #e7e7e7; }
@@ -257,11 +257,14 @@ h2 {
 
 .elemento_descripcion {
     float: left;
+    padding-left: 30px;
+    padding-top: 7px;
 }
 
 .elemento_valor {
     float: right;
     transition: transform 0.3s;
+    padding-top: 7px;
 }
 
 .elemento_porcentaje {
@@ -287,6 +290,9 @@ h2 {
     color: #FF5049;
 }
 
+div.elemento_eliminar{
+       padding-top: 4px;
+}
 
 .elemento_eliminar {
     float: right;
