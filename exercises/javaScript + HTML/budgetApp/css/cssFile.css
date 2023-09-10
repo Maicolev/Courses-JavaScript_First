@@ -249,7 +249,7 @@ h2 {
 .elemento {
     padding: 13px;
     border-bottom: 1px solid #e7e7e7;
-    height: 45px;
+    height: 35px;
 }
 
 .elemento:first-child { border-top: 1px solid #e7e7e7; }
@@ -291,7 +291,7 @@ h2 {
 .elemento_eliminar {
     float: right;
     align-items: center;
-    
+    background-color: #ffffff00 !important;
 }
 
 .elemento_eliminar--btn {
