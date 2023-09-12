@@ -36,5 +36,5 @@ function totalBudget(){
 }
 
 function totalPercentage(){
-    return (totalExpenses() * 100)/totalIncomes();
+    return totalExpenses()/totalIncomes();
 }

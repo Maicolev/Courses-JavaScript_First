@@ -65,7 +65,7 @@ function listIncomes(idIncome){
     trIncomes.appendChild(tdIncomesDescription);
 
     tdIncomesAmount.setAttribute('class', 'elemento_valor');
-    tdIncomesAmount.appendChild(document.createTextNode(incomes[incomes.length-1].amount));
+    tdIncomesAmount.appendChild(document.createTextNode(currencyFormat(incomes[incomes.length-1].amount)));
     tdIncomesAmount.appendChild(dvIncomes);
     trIncomes.appendChild(tdIncomesAmount);
 
@@ -77,10 +77,13 @@ function listExpenses(idExpense){
     let tableExpenses = document.getElementById('tb_expenses');
     let trExpenses = document.createElement('tr');
     let dvExpenses = document.createElement('div');
+    let dvPercent = document.createElement('div');
     let tdButtonExpenses = document.createElement('td');
     let tdButtonExpenses_in = document.createElement('ion-icon');
 
     dvExpenses.setAttribute('class','elemento_eliminar');
+    dvPercent.setAttribute('class','elemento_porcentaje');
+    dvPercent.setAttribute('id','elemento_porcentaje_'+ idExpense);
 
     trExpenses.setAttribute('id','tr_expenses_' + idExpense);
     trExpenses.setAttribute('class','elemento limpiarEstilos');
@@ -109,7 +112,9 @@ function listExpenses(idExpense){
     trExpenses.appendChild(tdExpensesDescription);
 
     tdExpensesAmount.setAttribute('class', 'elemento_valor');
-    tdExpensesAmount.appendChild(document.createTextNode(expenses[expenses.length-1].amount));
+    tdExpensesAmount.appendChild(document.createTextNode(currencyFormat(expenses[expenses.length-1].amount)));
+    dvPercent.textContent = percentFormat(calculatePercentPerExpense(expenses[expenses.length-1].amount));
+    tdExpensesAmount.appendChild(dvPercent);
     tdExpensesAmount.appendChild(dvExpenses);
     trExpenses.appendChild(tdExpensesAmount);
 
@@ -117,10 +122,11 @@ function listExpenses(idExpense){
 }
 
 function calculateBudget(){
-    document.getElementById('totalBudget').innerHTML = totalBudget();
-    document.getElementById('totalExpense').innerHTML = totalExpenses();
-    document.getElementById('totalIncome').innerHTML = totalIncomes();
-    document.getElementById('totalPercentage').innerHTML = totalPercentage();
+    document.getElementById('totalBudget').innerHTML = currencyFormat(totalBudget());
+    document.getElementById('totalExpense').innerHTML = currencyFormat(totalExpenses());
+    document.getElementById('totalIncome').innerHTML = currencyFormat(totalIncomes());
+    document.getElementById('totalPercentage').innerHTML = percentFormat(totalPercentage());
+    refreshPercentPerExpense();
 }
 
 //delete list elements (budget and tr)
@@ -151,6 +157,39 @@ function deleteTr(budgetType, id){
     let table = trDelete.parentNode;
     table.removeChild(trDelete);
 }
+
+function calculatePercentPerExpense (expense){
+    return percentFormat(expense/totalIncomes());
+}
+
+//format functions
+const currencyFormat = (value)  =>{
+    return value.toLocaleString('en-US', {style:'currency', currency:'USD', minimumFractionDigits:2});
+}
+
+const percentFormat = (value)  =>{
+    return value.toLocaleString('en-US', {style:'percent', minimumFractionDigits:1});
+}
+
+const refreshPercentPerExpense = () => {
+    let newPercent ;
+
+    for (let index = 0; index < expenses.length; index++){
+        console.log(index);
+        console.log(expenses[index].idExpense + expenses[index].description);
+    }
+
+   /** for (let index = 0; index < expenses.length; index++) {
+        console.log('-------------------index-------------');
+        console.log(index);
+        console.log('-------------------expenses-------------');
+        console.log(expenses[index].idExpense +' ' + expenses[index].description);
+        newPercent = percentFormat(calculatePercentPerExpense(expenses[index].amount));
+        document.getElementById('elemento_porcentaje_'+expenses[index].idExpense).innerHTML = newPercent ;
+
+    } */
+}
+
 //function showButtonTr(buttonElement){
     //let tdButtonExpenses = document.getElementById('td_button_delete' + countButtonExpenses);
     //buttonElement.removeAttribute('hidden');
@@ -164,3 +203,10 @@ function deleteTr(budgetType, id){
     tableExpenses.appendChild(trExpenses);
     */
 //}
+
+
+    /** for (const expense of expenses) {
+        console.log(expense.idExpense +' ' + expense.description);
+        newPercent = percentFormat(calculatePercentPerExpense(expense.amount));
+        document.getElementById('elemento_porcentaje_'+expense.idExpense).innerHTML = newPercent ;
+    } **/

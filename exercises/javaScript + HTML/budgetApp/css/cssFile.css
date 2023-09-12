@@ -272,7 +272,7 @@ h2 {
     margin-left: 20px;
     transition: transform 0.3s;
     font-size: 11px;
-    background-color: #FFDAD9;
+    background-color: #FFDAD9 !important;
     padding: 3px;
     border-radius: 3px;
     width: 45px;
