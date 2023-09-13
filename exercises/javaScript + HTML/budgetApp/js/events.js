@@ -179,9 +179,6 @@ const refreshPercentPerExpense = () => {
         newPercent = percentFormat(calculatePercentPerExpense(expense.amount));
         document.getElementById('elemento_porcentaje_'+expense.idExpense).innerHTML = newPercent ;
     }
-
-    console.log(expenses);
-
    /** for (let index = 0; index < expenses.length; index++) {
         console.log('-------------------index-------------');
         console.log(index);
