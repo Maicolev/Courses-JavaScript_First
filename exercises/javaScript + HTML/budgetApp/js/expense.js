@@ -1,14 +1,14 @@
 class Expense{
 
-    static _idExpense = 0;
+    static _countExpense = 0;
     constructor(description, amount){
-        Expense._idExpense++;
+        this._idExpense = Expense._countExpense++;
         this._description = description;
         this._amount = parseInt(amount);
     }
 
     get idExpense(){
-        return Expense._idExpense;
+        return this._idExpense;
     }
 
     get description(){

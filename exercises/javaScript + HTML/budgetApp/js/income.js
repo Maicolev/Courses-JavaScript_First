@@ -1,14 +1,14 @@
 class Income{
 
-    static _idIncome = 0;
+    static _countIncome = 0;
     constructor(description, amount){
-        Income._idIncome++;
+        this._idIncome = Income._countIncome++;
         this._description = description;
         this._amount = parseInt(amount);
     }
 
     get idIncome(){
-        return Income._idIncome;
+        return this._idIncome;
     }
 
     get description(){

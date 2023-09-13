@@ -52,7 +52,6 @@ function listIncomes(idIncome){
         deleteElement(budgetType, elementId);
     } , false);
 
-
     tdButtonIncomes.appendChild(tdButtonIncomes_in);
     dvIncomes.appendChild(tdButtonIncomes);
     //trIncomes.appendChild(tdButtonIncomes);
@@ -74,6 +73,8 @@ function listIncomes(idIncome){
 
 //create table as list expenses
 function listExpenses(idExpense){
+    let indexExpense = expenses.findIndex(element => element.idExpense === idExpense);
+
     let tableExpenses = document.getElementById('tb_expenses');
     let trExpenses = document.createElement('tr');
     let dvExpenses = document.createElement('div');
@@ -108,12 +109,12 @@ function listExpenses(idExpense){
     let tdExpensesAmount = document.createElement('td');
 
     tdExpensesDescription.setAttribute('class', 'elemento_descripcion');
-    tdExpensesDescription.appendChild(document.createTextNode(expenses[expenses.length-1].description));
+    tdExpensesDescription.appendChild(document.createTextNode(expenses[indexExpense].description));
     trExpenses.appendChild(tdExpensesDescription);
 
     tdExpensesAmount.setAttribute('class', 'elemento_valor');
-    tdExpensesAmount.appendChild(document.createTextNode(currencyFormat(expenses[expenses.length-1].amount)));
-    dvPercent.textContent = percentFormat(calculatePercentPerExpense(expenses[expenses.length-1].amount));
+    tdExpensesAmount.appendChild(document.createTextNode(currencyFormat(expenses[indexExpense].amount)));
+    dvPercent.textContent = percentFormat(calculatePercentPerExpense(expenses[indexExpense].amount));
     tdExpensesAmount.appendChild(dvPercent);
     tdExpensesAmount.appendChild(dvExpenses);
     trExpenses.appendChild(tdExpensesAmount);
@@ -174,10 +175,12 @@ const percentFormat = (value)  =>{
 const refreshPercentPerExpense = () => {
     let newPercent ;
 
-    for (let index = 0; index < expenses.length; index++){
-        console.log(index);
-        console.log(expenses[index].idExpense + expenses[index].description);
+    for (const expense of expenses) {
+        newPercent = percentFormat(calculatePercentPerExpense(expense.amount));
+        document.getElementById('elemento_porcentaje_'+expense.idExpense).innerHTML = newPercent ;
     }
+
+    console.log(expenses);
 
    /** for (let index = 0; index < expenses.length; index++) {
         console.log('-------------------index-------------');

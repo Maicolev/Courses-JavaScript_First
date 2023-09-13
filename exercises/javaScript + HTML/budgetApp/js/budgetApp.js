@@ -14,7 +14,6 @@ function addExpense(description, amount){
 }
 
 function totalIncomes(){
-
     let total = 0;
     for (const income of incomes) {
         total += income.amount;
@@ -23,7 +22,6 @@ function totalIncomes(){
 }
 
 function totalExpenses(){
-
     let total = 0;
     for (const expense of expenses) {
         total += expense.amount;
